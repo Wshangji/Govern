@@ -1,10 +1,10 @@
-package com.tongwy.governserve;
+package com.govern.webservie;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GovernServeApplicationTests {
+class WebServieApplicationTests {
 
     @Test
     void contextLoads() {
