@@ -1,15 +1,23 @@
 <template>
-  <hello-world />
+  <div class="home">
+    <v-img @click="click" style="width: 320px" alt="vue logo" src="../assets/logo.png"/>
+  </div>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
 
   export default {
     name: 'Home',
-
     components: {
-      HelloWorld,
     },
+    methods: {
+      click() {
+        this.$ajax.get('/hello').then((res) => {
+          console.log(res);
+        }).catch((err) => {
+          console.log(err)
+        })
+      }
+    }
   }
 </script>

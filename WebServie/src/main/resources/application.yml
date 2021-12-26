@@ -1,0 +1,7 @@
+server:
+  port: 7070
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
