@@ -2,6 +2,7 @@ package com.govern.webservie.util;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * @date: 2021-12-26 23-13
  */
 @Data
-public class PageResult<T> extends Result{
+public class PageResult<T> extends Result implements Serializable {
     //总记录数
     private long total;
     //分页数量

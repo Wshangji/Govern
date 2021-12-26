@@ -1,6 +1,7 @@
 server:
   port: 7070
 spring:
+  author: Nanf_bunan
   security:
     user:
       name: admin
