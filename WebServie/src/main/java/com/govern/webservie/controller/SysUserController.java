@@ -3,8 +3,10 @@ package com.govern.webservie.controller;
 
 import com.govern.webservie.service.SysUserService;
 import com.govern.webservie.util.Result;
+import com.govern.webservie.vo.LoginVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +27,8 @@ public class SysUserController {
     private SysUserService sysUserService;
 
     @PostMapping("/login")
-    public Result login() {
-        return sysUserService.findAll();
+    public Result login(@RequestBody LoginVo loginVo) {
+        return sysUserService.login(loginVo);
     }
 
 }

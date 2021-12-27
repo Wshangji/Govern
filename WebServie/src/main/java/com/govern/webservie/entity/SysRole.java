@@ -37,4 +37,9 @@ public class SysRole implements Serializable {
      */
     private List<SysMenu> menus;
 
+    /**
+     * 数据权限
+     */
+    private List<SysPermission> permissions;
+
 }

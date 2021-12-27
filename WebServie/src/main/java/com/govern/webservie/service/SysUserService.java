@@ -4,6 +4,7 @@ import com.govern.webservie.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.govern.webservie.mapper.SysUserMapper;
 import com.govern.webservie.util.Result;
+import com.govern.webservie.vo.LoginVo;
 
 /**
  * <p>
@@ -16,8 +17,16 @@ import com.govern.webservie.util.Result;
 public interface SysUserService extends IService<SysUser> {
 
     /**
-     * 获取所有的用户
+     * 实现登录功能
+     * @param loginVo
      * @return
      */
-    Result findAll();
+    Result login(LoginVo loginVo);
+
+    /**
+     * 根据用户名获取用户对象
+     * @param username
+     * @return
+     */
+    SysUser findByUsername(String username);
 }

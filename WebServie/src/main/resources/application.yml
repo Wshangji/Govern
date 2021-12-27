@@ -18,3 +18,13 @@ mybatis-plus:
   mapper-locations: classpath*:/mapper/**Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+jwt:
+  # 请求头
+  tokenHeader: Authorization
+  # 签名加盐
+  secret: governmanager
+  # jwt过期时间
+  expiration: 1800
+  # token头部
+  tokenHead: 'Bearer'
