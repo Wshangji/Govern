@@ -2,7 +2,19 @@ server:
   port: 7070
 spring:
   author: Nanf_bunan
+  application:
+    name: Govern
   security:
     user:
       name: admin
       password: admin
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/governroom?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: wytsw123321
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

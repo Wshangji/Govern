@@ -12,11 +12,13 @@
     <artifactId>WebServie</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>WebServie</name>
-    <description>WebServie</description>
+    <description>智能家居管理平台</description>
     <properties>
         <java.version>11</java.version>
     </properties>
     <dependencies>
+
+<!--        web相关-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -26,11 +28,32 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+<!--        mysql驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!--mybatis-plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!-- framework: mybatis-plus代码生成需要一个模板引擎 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <!--mp代码生成器-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <!--        lombook-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
