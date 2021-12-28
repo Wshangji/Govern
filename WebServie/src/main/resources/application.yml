@@ -16,6 +16,7 @@ spring:
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**Mapper.xml
+  type-aliases-package: com.govern.webservie.entity
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

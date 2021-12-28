@@ -2,7 +2,6 @@ package com.govern.webservie.service;
 
 import com.govern.webservie.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.govern.webservie.mapper.SysUserMapper;
 import com.govern.webservie.util.Result;
 import com.govern.webservie.vo.LoginVo;
 
@@ -16,9 +15,10 @@ import com.govern.webservie.vo.LoginVo;
  */
 public interface SysUserService extends IService<SysUser> {
 
+
     /**
-     * 实现登录功能
-     * @param loginVo
+     * 登录接口
+     * @param loginVo 用户名和密码
      * @return
      */
     Result login(LoginVo loginVo);

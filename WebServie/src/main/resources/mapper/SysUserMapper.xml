@@ -2,26 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.govern.webservie.mapper.SysUserMapper">
 
-    <select id="findAll" resultType="com.govern.webservie.entity.SysUser">
-        select * from sys_user
-    </select>
-
-<!--用户信息结果-->
+<!--    用户信息结果-->
     <resultMap id="mainMap" type="com.govern.webservie.entity.SysUser">
         <id column="id" property="id"/>
         <result column="usr_name" property="usrName"/>
         <result column="usr_pwd" property="usrPwd"/>
         <result column="usr_statues" property="usrStatues"/>
-        <collection property="roles" ofType="com.govern.webservie.entity.SysRole" resultMap="roleMap" select="findRoles" column="id"/>
+        <collection property="roles" select="findRoles" column="id"  ofType="com.govern.webservie.entity.SysRole"/>
     </resultMap>
-<!--角色结果-->
-    <resultMap id="roleMap" type="com.govern.webservie.entity.SysRole">
+
+    <resultMap type="com.govern.webservie.entity.SysRole" id="roleMap">
         <id column="id" property="id"/>
         <result column="label" property="label"/>
-        <collection property="menus" resultMap="menuMap" ofType="com.govern.webservie.entity.SysMenu" select="findMenus" column="id"/>
-        <collection property="permissions" resultMap="permissionMap" ofType="com.govern.webservie.entity.SysPermission" select="findPermissions" column="id"/>
+        <collection property="menus" select="findMenus" column="id" ofType="com.govern.webservie.entity.SysMenu"/>
+        <collection property="permissions" select="findPermissions" column="id" ofType="com.govern.webservie.entity.SysPermission"/>
     </resultMap>
-<!--菜单结果-->
+
     <resultMap id="menuMap" type="com.govern.webservie.entity.SysMenu">
         <id column="id" property="id"/>
         <result column="parent_id" property="parentId"/>
@@ -29,31 +25,36 @@
         <result column="description" property="description"/>
         <result column="component" property="component"/>
         <result column="path" property="path"/>
-        <collection property="children" ofType="com.govern.webservie.entity.SysMenu" select="findChildrenMenu" column="id"/>
+        <collection property="children" select="findChildrenMenu" column="id" ofType="com.govern.webservie.entity.SysMenu"/>
     </resultMap>
-<!--权限结果-->
+
     <resultMap id="permissionMap" type="com.govern.webservie.entity.SysPermission">
         <id column="id" property="id"/>
         <result column="label" property="label"/>
     </resultMap>
-<!--获取用户信息-->
-    <select id="findUsername" parameterType="java.lang.String" resultType="com.govern.webservie.entity.SysUser">
-        select * from sys_user where usr_name = #{username}
-    </select>
-<!--根据用户id，查询角色信息-->
-    <select id="findRoles" parameterType="int" resultType="roleMap">
+    <!--根据用户id，查询角色信息-->
+    <select id="findRoles" parameterType="int" resultMap="roleMap">
         SELECT * FROM sys_role WHERE id IN (SELECT role_id FROM user_roles WHERE user_id = #{id})
     </select>
-<!--根据角色id，查询菜单信息-->
-    <select id="findMenus" parameterType="int" resultType="menuMap">
+    <!--根据角色id，查询菜单信息-->
+    <select id="findMenus" parameterType="int" resultMap="menuMap">
         SELECT * FROM sys_menu WHERE id IN (SELECT menu_id FROM roles_menu WHERE role_id = #{id}) AND parent_id IS NULL
     </select>
-<!--根据角色id，查询数据权限信息-->
-    <select id="findPermissions" parameterType="int" resultType="permissionMap">
+    <!--根据角色id，查询数据权限信息-->
+    <select id="findPermissions" parameterType="int" resultMap="permissionMap">
         SELECT * FROM sys_permission WHERE id IN (SELECT permission_id FROM roles_permissions WHERE role_id = #{id})
     </select>
-<!--获取子菜单-->
+    <!--获取子菜单-->
     <select id="findChildrenMenu" parameterType="int" resultType="com.govern.webservie.entity.SysMenu">
         SELECT * FROM sys_menu WHERE id = #{id}
+    </select>
+
+    <!--获取用户信息-->
+    <select id="findAll" resultMap="mainMap">
+        select * from sys_user
+    </select>
+
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="mainMap">
+        select * from sys_user where usr_name = #{username}
     </select>
 </mapper>

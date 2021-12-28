@@ -23,23 +23,23 @@ public class TokenUtil {
     private String secret;
 
     @Value("${jwt.expiration}")
-    private long expiration;
+    private Long expiration;
 
     public String generateToken(UserDetails userDetails) {
-        Map<String,Object> map = new HashMap<>(2);
-        map.put("username", userDetails.getUsername());
-        map.put("created", new Date());
-        return this.generateJwrt(map);
+        Map<String,Object> claims = new HashMap<>(2);
+        claims.put("username", userDetails.getUsername());
+        claims.put("created", new Date());
+        return generateToken(claims);
     }
 
     /**
      * 根据荷载信息生成Token
-     * @param map
+     * @param claims
      * @return
      */
-    private String generateJwrt(Map<String, Object> map) {
+    public String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
-                .setClaims(map)
+                .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
                 .compact();
@@ -79,9 +79,25 @@ public class TokenUtil {
         return this.getTockenBody(token).getExpiration().before(new Date());
     }
 
+    /**
+     * 验证token是否有效
+     * @param token
+     * @param userDetails
+     * @return
+     */
+    public boolean validateToken(String token, UserDetails userDetails) {
+        String username = getUsernameByToken(token);
+        return username.equals(userDetails.getUsername()) && !isExpiration(token);
+    }
+
+    /**
+     * 刷新token令牌
+     * @param token
+     * @return
+     */
     public String refreshToken(String token) {
         Claims claims = this.getTockenBody(token);
         claims.setExpiration(new Date());
-        return this.generateJwrt(claims);
+        return this.generateToken(claims);
     }
 }
