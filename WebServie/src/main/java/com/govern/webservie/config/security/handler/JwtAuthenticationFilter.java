@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -58,7 +57,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             //根据token获取用户名信息
             String username = tokenUtil.getUsernameByToken(authToken);
             //token存在，但是未登录
-            if (username != null && null == SecurityContextHolder.getContext().getAuthentication()) {
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 //登录
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 //验证toekn是否有效，重新设置用户对象

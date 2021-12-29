@@ -46,7 +46,7 @@
     </select>
     <!--获取子菜单-->
     <select id="findChildrenMenu" parameterType="int" resultType="com.govern.webservie.entity.SysMenu">
-        SELECT * FROM sys_menu WHERE id = #{id}
+        SELECT * FROM sys_menu WHERE parent_id = #{id}
     </select>
 
     <!--获取用户信息-->

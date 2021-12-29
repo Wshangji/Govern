@@ -1,11 +1,10 @@
 package com.govern.webservie.config.security;
 
+import com.govern.webservie.config.security.contents.SecurityContents;
 import com.govern.webservie.config.security.handler.JwtAccessDeniedHandler;
 import com.govern.webservie.config.security.handler.JwtAuthenticationEntryPoint;
 import com.govern.webservie.config.security.handler.JwtAuthenticationFilter;
 import com.govern.webservie.config.security.seivice.UserDetailsServiceImpl;
-import com.govern.webservie.entity.SysUser;
-import com.govern.webservie.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +15,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -52,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .mvcMatchers("/user/login");
+                .mvcMatchers(SecurityContents.NONE_SECURITY_URL_PATTERNS);
     }
 
     /**

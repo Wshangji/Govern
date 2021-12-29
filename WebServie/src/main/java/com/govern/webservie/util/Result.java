@@ -1,14 +1,24 @@
 package com.govern.webservie.util;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
  * @author: Nanf_bunan
  * @date: 2021-12-26 23-12
  */
+@ApiModel(value = "响应参数")
 public class Result implements Serializable {
+
+    @ApiModelProperty(value = "响应是否成功" ,dataType = "boolean")
     private boolean flag;
+
+    @ApiModelProperty(value = "响应信息" ,dataType = "String")
     private String msg;
+
+    @ApiModelProperty(value = "响应数据" ,dataType = "Object")
     private Object data;
 
     public Result() {
