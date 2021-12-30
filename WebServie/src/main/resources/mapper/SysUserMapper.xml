@@ -50,13 +50,7 @@
                 FROM
                     roles_menu
                 WHERE
-                        role_id IN (
-                        SELECT
-                            role_id
-                        FROM
-                            sys_role
-                        WHERE
-                            id IN ( SELECT role_id FROM user_roles WHERE user_id = #{id} )))
+                    role_id IN ( SELECT role_id FROM user_roles WHERE user_id = #{id} ))
           AND parent_id IS NULL
     </select>
     <!--根据用户id，查询数据权限信息-->
@@ -78,7 +72,7 @@
                         FROM
                             user_roles
                         WHERE
-                            user_id = #{id}))
+                            user_id = #{id} ))
 </select>
     <!--获取子菜单-->
     <select id="findChildrenMenu" parameterType="int" resultType="com.govern.webservie.entity.SysMenu">

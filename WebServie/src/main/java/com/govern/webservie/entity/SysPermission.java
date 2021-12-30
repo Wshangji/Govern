@@ -2,21 +2,24 @@ package com.govern.webservie.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import java.util.List;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
+ * <p>
+ * 
+ * </p>
+ *
  * @author Nanf_bunan
- * @since 2021-12-27
+ * @since 2021-12-30
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class SysMenu implements Serializable {
+public class SysPermission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,23 +27,12 @@ public class SysMenu implements Serializable {
     private Integer id;
 
     /**
-     * 父级菜单
+     * 权限描述
      */
-    private Integer parentId;
+    private String label;
 
-    private String title;
+    @TableField("CODE")
+    private String code;
 
-    private String description;
 
-    /**
-     * 菜单组件
-     */
-    private String component;
-
-    private String path;
-
-    /**
-     * 子菜单
-     */
-    private List<SysMenu> children;
 }
