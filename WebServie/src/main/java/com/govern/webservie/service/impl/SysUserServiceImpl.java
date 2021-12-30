@@ -51,8 +51,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public Result login(LoginVo loginVo) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginVo.getUsername());
-        if (null == userDetails || passwordEncoder.matches(loginVo.getPassword(), userDetails.getPassword())) {
-            log.info("1"+loginVo.getPassword()+"1" + "\n" + "2" +userDetails.getPassword()+"2");
+        log.info(loginVo.getPassword());
+        if (null == userDetails || !passwordEncoder.matches(loginVo.getPassword(), userDetails.getPassword())) {
             return Result.fail("账号或密码错误");
         }
         if(!userDetails.isEnabled()) {

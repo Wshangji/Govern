@@ -1,5 +1,5 @@
 server:
-  port: 7070
+  port: 9000
 spring:
   author: Nanf_bunan
   application:
@@ -29,6 +29,6 @@ jwt:
   # 签名加盐
   secret: governmanager
   # jwt过期时间
-  expiration: 1800
+  expiration: 7200
   # token头部
   tokenHead: 'Bearer'

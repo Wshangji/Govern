@@ -20,7 +20,7 @@ Govern智能家居管理系统（Demo）版，web 服务端采用spring boot，�
 ### 前端技术：
 
 - vue
-- vuetify
+- Element UI
 - axio
 - vue-router
 - vuex
@@ -37,6 +37,8 @@ Govern智能家居管理系统（Demo）版，web 服务端采用spring boot，�
 
 ### 数据库模型图：
 
+[![TRIe8H.jpg](https://s4.ax1x.com/2021/12/30/TRIe8H.jpg)](https://imgtu.com/i/TRIe8H)
+
 ------
 
 更新日志：
@@ -45,4 +47,6 @@ Govern智能家居管理系统（Demo）版，web 服务端采用spring boot，�
 - 2021/12/26 设计数据库表结构，创建数据库，解决前后端跨域问题，配置树莓派环境
 - 2021/12/27 引入Security，实现登录角色权限管理，开发vue登录注册页面
 - 2021/12/28 出现严重bug，项目回滚并且更新架构，开发树莓派数据获取功能
-- 2021/12/29 继承swagger2接口文档系统
+- 2021/12/29 继承swagger2接口文档系统，实现vue管理主界面
+- 2021/12/30 由于国内vuetify参考文档较少，更换前端UI为Element UI
+

@@ -30,15 +30,4 @@ public class SysRole implements Serializable {
      * 角色描述
      */
     private String label;
-
-    /**
-     * 角色对应的菜单
-     */
-    private List<SysMenu> menus;
-
-    /**
-     * 数据权限
-     */
-    private List<SysPermission> permissions;
-
 }

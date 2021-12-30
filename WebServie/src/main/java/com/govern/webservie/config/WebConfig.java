@@ -16,9 +16,9 @@ public class WebConfig implements WebMvcConfigurer {
                 //允许访问路径
                 .addMapping("/**")
                 //配置请求来源
-                .allowedOrigins("http://localhost:8081")
+                .allowedOrigins("http://localhost:9001")
                 //允许跨域访问的方法
-                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTION")
+                .allowedMethods("GET", "POST", "DELETE", "PUT")
                 //允许携带参数
                 .allowCredentials(true)
                 //最大响应时间

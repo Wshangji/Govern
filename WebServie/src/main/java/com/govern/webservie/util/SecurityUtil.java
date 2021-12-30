@@ -40,7 +40,9 @@ public class SecurityUtil {
      */
     public static SysUser getUserInfo() {
         try {
-            return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            SysUser user = (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            user.setUsrPwd(null);
+            return user;
         } catch (Exception e) {
             return null;
         }

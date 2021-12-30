@@ -24,12 +24,4 @@ public class TestController {
     public Result test() {
         return Result.success("信息返回成功", "你好");
     }
-
-    @GetMapping("getInfo")
-    public Result getUserInfo(Principal principal) {
-        if (principal == null) {
-            return Result.fail("请登录");
-        }
-        return Result.success("获取用户信息成功", SecurityUtil.getUserInfo());
-    }
 }

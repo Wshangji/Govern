@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -25,16 +27,27 @@ public class SysUser implements Serializable , UserDetails {
 
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(value = "用户主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "用户名")
     private String usrName;
 
+    @ApiModelProperty(value = "用户密码")
     private String usrPwd;
 
+    @ApiModelProperty(value = "用户账号状态")
     private Boolean usrStatues;
 
+    @ApiModelProperty(value = "用户对应的角色信息")
     private List<SysRole> roles;
+
+    @ApiModelProperty(value = "用户对应的菜单")
+    private List<SysMenu> menus;
+
+    @ApiModelProperty(value = "用户对应的数据权限")
+    private List<SysPermission> permissions;
 
 
     /**
